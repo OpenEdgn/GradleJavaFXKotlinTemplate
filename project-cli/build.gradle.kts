@@ -4,7 +4,7 @@ plugins {
     application
     kotlin("jvm")
     id("org.openjfx.javafxplugin") version "0.0.10"
-    id("org.beryx.jlink") version "2.23.8"
+    id("org.beryx.jlink") version "2.24.1"
 }
 
 val mainClassStr = "com.github.template.MainKt"
@@ -18,15 +18,15 @@ javafx {
 dependencies {
     implementation(kotlin("reflect"))
     implementation(kotlin("stdlib"))
-    testImplementation("org.junit.jupiter:junit-jupiter:5.6.2")
-    testImplementation("org.junit.platform:junit-platform-launcher:1.6.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.2")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.7.2")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 val compileKotlin: KotlinCompile by tasks
 val compileJava: JavaCompile by tasks
-compileJava.destinationDir = compileKotlin.destinationDir
+compileJava.destinationDirectory.set(compileKotlin.destinationDirectory.get())
 
 java {
     modularity.inferModulePath.set(true)
@@ -38,8 +38,8 @@ application {
 }
 
 jlink {
-    options.addAll("--strip-debug","--compress","2","--no-header-files","--no-man-pages")
-    launcher{
+    options.addAll("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages")
+    launcher {
         name = "template"
         jvmArgs = arrayListOf()
     }
@@ -55,6 +55,3 @@ tasks.test {
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.jvmTarget = "11"
 }
-
-
-

@@ -10,7 +10,6 @@ import javafx.scene.layout.VBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
 
-
 class Main : Application() {
     override fun start(primaryStage: Stage) {
         val root = VBox()
@@ -18,12 +17,12 @@ class Main : Application() {
         val label = Label("Hello World.")
         val button = Button("CLICK")
         button.id = "button"
-        VBox.setMargin(button, Insets(30.0,0.0,0.0,0.0))
+        VBox.setMargin(button, Insets(30.0, 0.0, 0.0, 0.0))
         button.setOnAction {
             button.text = "ACCEPT"
             println("ACCEPT")
         }
-        root.children.addAll(label,button)
+        root.children.addAll(label, button)
         label.font = Font.font(24.0)
         primaryStage.scene = Scene(root, 800.0, 600.0)
         primaryStage.title = "Main"
