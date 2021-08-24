@@ -7,6 +7,6 @@ internal class MainTest {
 
     @Test
     fun sayHelloWorld() {
-        assertEquals(1+1,2)
+        assertEquals(1 + 1, 2)
     }
 }
